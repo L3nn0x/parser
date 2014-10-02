@@ -22,6 +22,10 @@
 
 [()] return yytext[0];
 
+[_[:alpha:]]+ {yylval.id = strdup(yytext); return ID;}
+
+[[:space:]] {}
+
 . {yyerror("unexpected character error");}
 
 %%

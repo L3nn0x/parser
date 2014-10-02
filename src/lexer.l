@@ -18,7 +18,9 @@
 "+" return PLUS;
 "-" return MINUS;
 "*" return TIMES;
-"/" return DIVIDE;
+"/" return DIV;
+
+[()] return yytext[0];
 
 . {yyerror("unexpected character error");}
 

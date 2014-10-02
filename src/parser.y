@@ -12,7 +12,7 @@
 %token END_EXPR MINUS PLUS TIMES DIVIDE
 
 %left MINUS PLUS
-%left TIMES DIVIDE
+%left TIMES DIV
 
 %type <number> e
 
@@ -30,6 +30,9 @@ e:		NUMBER {$$ = $1;}
 	|	e MINUS e {$$ = $1 - $3;}
 	|	e TIMES e {$$ = $1 * $3;}
 	|	e DIVIDE e {if ($3) $$ = $1 / $3; else {$$=0; yyerror("null division error");}}
+	|	MINUS e {$$ = 0 - $2;}
+	|	PLUS e {$$ = $2;}
+	|	'(' e ')' {$$ = $2;}
 	;
 
 %%

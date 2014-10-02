@@ -21,7 +21,7 @@ LEX=flex
 YACC=bison
 YFLAGS= -d -v -t
 
-SRCFILES= $(wildcard $(SRCDIR)/*.c) $(SRCDIR)/lexer.c #$(SRCDIR)/parser.c 
+SRCFILES= $(wildcard $(SRCDIR)/*.c) $(SRCDIR)/lexer.c $(SRCDIR)/parser.c 
 OBJS= $(SRCFILES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 OUTFILE=$(BINDIR)/a.out

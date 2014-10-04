@@ -34,8 +34,17 @@ static t_symbol	*add_elem(t_symbol **s)
 		return (*s);
 	}
 	cursor = g_config->root;
-	while (cursor->next)
+	while (cursor->next && strcmp(cursor->symbol->entry, (*s)->entry))
 		cursor = cursor->next;
+	if (cursor->next)
+	{
+		free(tmp);
+		free((*s)->entry);
+		if ((*s)->value)
+			free((*s)->value);
+		free(*s);
+		return (cursor->symbol);
+	}
 	cursor->next = tmp;
 	return (*s);
 }
